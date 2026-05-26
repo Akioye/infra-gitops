@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   res.writeHead(200);
-  res.end('GitOps is working automatically! 🔥');
+  res.end('GitHub Actions triggered this! ⚡');
 });
 
 server.listen(3000, () => {
