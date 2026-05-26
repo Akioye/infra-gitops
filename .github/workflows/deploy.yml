@@ -11,19 +11,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout app repo
+        uses: actions/checkout@v4
 
       - name: Set image tag
         run: echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Build Docker image
-        run: |
-          docker build -t myapp:${{ env.IMAGE_TAG }} ./app
-
-      - name: Update deployment manifest
-        run: |
-          sed -i "s|image: myapp:.*|image: myapp:${{ env.IMAGE_TAG }}|g" \
-            ../k8s-manifests/apps/myapp/deployment.yaml
+        run: docker build -t myapp:${{ env.IMAGE_TAG }} ./app
 
       - name: Checkout manifests repo
         uses: actions/checkout@v4
