@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   res.writeHead(200);
-  res.end('Live on AWS! 🌍');;
+  res.end('Live on AWS with ECR! 🌍');
 });
 
 server.listen(3000, () => {
