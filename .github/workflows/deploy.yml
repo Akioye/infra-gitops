@@ -17,8 +17,23 @@ jobs:
       - name: Set image tag
         run: echo "IMAGE_TAG=${{ github.sha }}" >> $GITHUB_ENV
 
-      - name: Build Docker image
-        run: docker build -t myapp:${{ env.IMAGE_TAG }} ./app
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push image to ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        run: |
+          docker build -t $ECR_REGISTRY/myapp:$IMAGE_TAG ./app
+          docker push $ECR_REGISTRY/myapp:$IMAGE_TAG
 
       - name: Checkout manifests repo
         uses: actions/checkout@v4
@@ -28,8 +43,10 @@ jobs:
           path: k8s-manifests
 
       - name: Update STAGING image tag only
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         run: |
-          sed -i "s|image: myapp:.*|image: myapp:${{ env.IMAGE_TAG }}|g" \
+          sed -i "s|image: .*myapp:.*|image: $ECR_REGISTRY/myapp:$IMAGE_TAG|g" \
             k8s-manifests/apps/staging/deployment.yaml
 
       - name: Push updated staging manifest
