@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   res.writeHead(200);
-  res.end('GitOps with Slack notifications! 📣');
+  res.end('Testing on staging first! 🧪');
 });
 
 server.listen(3000, () => {
