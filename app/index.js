@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     return;
   }
   res.writeHead(200);
-  res.end('Testing on staging first! 🧪');
+  res.end('Live on AWS! 🌍');;
 });
 
 server.listen(3000, () => {
