@@ -6,9 +6,8 @@ const server = http.createServer((req, res) => {
     res.end('OK');
     return;
   }
-  // BROKEN - this will crash the app
-  res.writeHead(500);
-  res.end(undefinedVariable);
+  res.writeHead(200);
+  res.end('Live on AWS with ECR! 🌍');
 });
 
 server.listen(3000, () => {
