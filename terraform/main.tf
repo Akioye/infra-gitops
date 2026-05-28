@@ -5,13 +5,34 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  backend "s3" {
+    bucket  = "gitops-terraform-state-akioye"
+    key     = "gitops/terraform.tfstate"
+    region  = "us-east-1"
+    encrypt = true
+  }
 }
 
 provider "aws" {
   region = var.aws_region
 }
 
-# VPC — the private network your cluster lives in
+# ECR Repository
+resource "aws_ecr_repository" "myapp" {
+  name                 = "myapp"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = false
+  }
+
+  tags = {
+    Project = "gitops"
+  }
+}
+
+# VPC
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.0.0"
@@ -28,10 +49,11 @@ module "vpc" {
 
   tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    Project                                      = "gitops"
   }
 }
 
-# EKS — the Kubernetes cluster (your city)
+# EKS Cluster
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "20.0.0"
@@ -45,9 +67,13 @@ module "eks" {
   eks_managed_node_groups = {
     main = {
       min_size       = 1
-      max_size       = 3
+      max_size       = 2
       desired_size   = 2
       instance_types = ["t3.small"]
     }
+  }
+
+  tags = {
+    Project = "gitops"
   }
 }
