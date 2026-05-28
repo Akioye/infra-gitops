@@ -49,7 +49,7 @@ module "vpc" {
 
   tags = {
     "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-    Project                                      = "gitops"
+    Project                                     = "gitops"
   }
 }
 
