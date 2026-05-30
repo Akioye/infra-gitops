@@ -8,6 +8,12 @@
 [▶️ Watch 3-minute demo on Loom](your-loom-link)
 
 ## 🏗️ Architecture
+## Architecture Diagram
+<p align="center">
+    <img src="self-healing-project-architecture.png" width="700" alt="self-healing-project-architecture.png"/>
+  </a>
+</p>
+
 
 ![Architecture Diagram](architecture/diagram.png)
 
