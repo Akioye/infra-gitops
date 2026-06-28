@@ -9,7 +9,7 @@
 
 ## 🏗️ Architecture Diagram
 <p align="center">
-    <img src="architecture/architecture-diagram.svg" width="500" alt="project-architecture-diagram.png"/>
+    <img src="architecture/architecture-diagram.svg" width="600" alt="project-architecture-diagram.png"/>
   </a>
 </p>
 
