@@ -14,8 +14,6 @@
 </p>
 
 
-![Architecture Diagram](architecture/diagram.png)
-
 ## 🔧 Tech Stack
 - **AWS EKS** — Kubernetes cluster
 - **AWS ECR** — Docker image registry
