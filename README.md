@@ -134,7 +134,7 @@ aws elb delete-load-balancer --load-balancer-name NAME_HERE --region us-east-1
 ![Production](screenshoots/production-live.png.png)
 
 **AWS EKS — 2 Nodes Running Across Availability Zones**
-![Nodes](screenshoots/kubectl-nodes.png.pmg)
+![Nodes](screenshoots/kubectl-nodes.png.png)
 
 ## 💰 AWS Cost Estimate
 
