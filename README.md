@@ -5,7 +5,7 @@
 > applications when you push code — no manual steps required.
 
 ## 🎬 Demo
-[▶️ Watch 3-minute demo on Loom]([your-loom-link](https://www.loom.com/share/d8b340deea57477196b49a997803bc5c))
+[▶️ Watch 3-minute demo on Loom](https://www.loom.com/share/d8b340deea57477196b49a997803bc5c)
 
 ## 🏗️ Architecture Diagram
 <p align="center">
