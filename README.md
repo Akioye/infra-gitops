@@ -119,22 +119,22 @@ aws elb delete-load-balancer --load-balancer-name NAME_HERE --region us-east-1
 ## 📸 Screenshots
 
 **ArgoCD Dashboard — Production Healthy, Staging Synced**
-![ArgoCD](screenshots/argocd-dashboard.png)
+![ArgoCD](screenshoots/argocd-dashboard.png)
 
 **GitHub Actions — Full Pipeline Green in 22 seconds**
-![GitHub Actions](screenshots/github-actions.png)
+![GitHub Actions](screenshoots/github-actions.png)
 
 **Slack Notifications — Real Time Deployment Alerts**
-![Slack](screenshots/slack-notifications.png)
+![Slack](screenshoots/slack-notifications.png)
 
 **Staging Live on AWS EKS**
-![Staging](screenshots/staging-live.png)
+![Staging](screenshoots/staging-live.png)
 
 **Production Live on AWS EKS**
-![Production](screenshots/production-live.png)
+![Production](screenshoots/production-live.png)
 
 **AWS EKS — 2 Nodes Running Across Availability Zones**
-![Nodes](screenshots/kubectl-nodes.png)
+![Nodes](screenshoots/kubectl-nodes.png)
 
 ## 💰 AWS Cost Estimate
 
